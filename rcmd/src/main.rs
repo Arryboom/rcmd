@@ -1,7 +1,7 @@
 fn main() {
 	let args: Vec<String> = std::env::args().collect();
 
-	if args.len() < 2 {
+	if args.len() < 3 {
 		println!("usage: {} <pid> <command ...>", &args[0]);
 		return;
 	}
@@ -75,6 +75,8 @@ fn rcmd(pid: u32, cmd: &String) -> Result<(), &str> {
 	)};
 
 	println!("[+] Spawned TID {} in PID {}", tid, pid);
+	
+	// handles close implicitly on process exit
 
 	Ok(())
 }
